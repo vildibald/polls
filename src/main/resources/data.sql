@@ -1,3 +1,4 @@
-SELECT 1+1;
--- INSERT INTO public.roles(name) VALUES('ROLE_USER');
--- INSERT INTO public.roles(name) VALUES('ROLE_ADMIN');
+INSERT INTO public.roles(id, name)
+VALUES (1, 'ROLE_USER'),
+       (2, 'ROLE_ADMIN')
+ON CONFLICT DO NOTHING;

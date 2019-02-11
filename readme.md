@@ -31,20 +31,18 @@
 	./gradlew bootRun
 	```
 	The server will start on port 8080.
-	
+
 5. **Default Roles**
 	
-	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, run the following commands or use graphical tool like PgAdmin or DBeaver.
-
-    ```bash
-	psql polling_app hramsa
-	```
-    Whether running from console or graphical tool, run these SQL statements. 
+	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, I have added the following sql queries in `src/main/resources/data.sql` file. Spring boot will automatically execute this script on startup -
 
 	```sql
-	INSERT INTO public.roles(name) VALUES('ROLE_USER');
-	INSERT INTO public.roles(name) VALUES('ROLE_ADMIN');
+	INSERT INTO public.roles(id, name)
+    VALUES (1, 'ROLE_USER'),
+           (2, 'ROLE_ADMIN')
+    ON CONFLICT DO NOTHING;
 	```
 
 	Any new user who signs up to the app is assigned the `ROLE_USER` by default.
+
    
