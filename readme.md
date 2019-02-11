@@ -18,12 +18,18 @@
 
 4. **Run the app**
 
-	You can run the spring boot app by typing the following command -
+	You can run the spring boot app by typing the following command.
 
 	```bash
+	# If gradle is already installed on your machine, then run 
 	gradle bootRun
+	
+	# Othervise on Windows machine run
+	gradlew.bat bootRun
+	
+	# Othervise on Linux machine run
+	./gradlew bootRun
 	```
-
 	The server will start on port 8080.
 	
 5. **Default Roles**
