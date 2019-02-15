@@ -23,10 +23,10 @@
 	# If gradle is already installed on your machine, then run 
 	gradle bootRun
 	
-	# Othervise on Windows machine run
+	# Otherwise on Windows machine run
 	gradlew.bat bootRun
 	
-	# Othervise on Linux machine run
+	# Otherwise on Linux machine run
 	./gradlew bootRun
 	```
 	The server will start on port 8080.
