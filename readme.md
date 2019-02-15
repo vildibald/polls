@@ -57,7 +57,7 @@
 
     Note that the unit and integration tests are separated using Spring profiles, therefore
     integration tests will not be performed during gradle's standard `build` or `test` tasks, 
-    which is in general a preferred solution.
+    which is generally a preferred solution.
     
     Also integration tests use an embedded in-memory HSQLDB instead of PostgreSQL.  
    
