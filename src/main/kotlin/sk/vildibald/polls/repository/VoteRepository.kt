@@ -11,11 +11,13 @@ import sk.vildibald.polls.model.ChoiceVoteCount
 
 @Repository
 interface VoteRepository : JpaRepository<Vote, Long> {
-    @Query(value = "SELECT NEW sk.vildibald.polls.model.ChoiceVoteCount(v.choice.id, count(v.id)) FROM Vote v WHERE v.poll.id in :pollIds GROUP BY v.choice.id")
+    @Query(value = "SELECT NEW sk.vildibald.polls.model.ChoiceVoteCount(v.choice.id, count(v.id))" +
+            " FROM Vote v WHERE v.poll.id in :pollIds GROUP BY v.choice.id")
     fun countByPollIdInGroupByChoiceId(@Param("pollIds") pollIds: Iterable<Long>)
             : List<ChoiceVoteCount>
 
-    @Query(value = "SELECT NEW sk.vildibald.polls.model.ChoiceVoteCount(v.choice.id, count(v.id)) FROM Vote v WHERE v.poll.id = :pollId GROUP BY v.choice.id")
+    @Query(value = "SELECT NEW sk.vildibald.polls.model.ChoiceVoteCount(v.choice.id, count(v.id))" +
+            " FROM Vote v WHERE v.poll.id = :pollId GROUP BY v.choice.id")
     fun countByPollIdGroupByChoiceId(@Param("pollId") pollId: Long): List<ChoiceVoteCount>
 
     @Query(value = "SELECT v FROM Vote v where v.user.id = :userId and v.poll.id in :pollIds")

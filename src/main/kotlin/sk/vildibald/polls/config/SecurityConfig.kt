@@ -19,9 +19,9 @@ import sk.vildibald.polls.service.impl.UserDetailsServiceImpl
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.BeanIds
 
-
-
-
+/**
+ * This configuration defines which API is accessible for any user or requires authentication.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -56,15 +56,15 @@ class SecurityConfig(
         http.cors()
                 .and()
                 .csrf()
-                    .disable()
+                .disable()
                 .exceptionHandling()
-                    .authenticationEntryPoint(unauthorizedHandler)
-                    .and()
+                .authenticationEntryPoint(unauthorizedHandler)
+                .and()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .authorizeRequests()
-                    .antMatchers("/",
+                .antMatchers("/",
                         "/favicon.ico",
                         "/**/*.png",
                         "/**/*.gif",
@@ -73,16 +73,16 @@ class SecurityConfig(
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js")
-                        .permitAll()
-                    .antMatchers("/hello", "/api/auth/**")
-                        .permitAll()
-                    .antMatchers("/api/user/checkUsernameAvailability",
-                            "/api/user/checkEmailAvailability")
-                        .permitAll()
-                    .antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
-                        .permitAll()
-                    .anyRequest()
-                        .authenticated()
+                .permitAll()
+                .antMatchers("/hello", "/api/auth/**")
+                .permitAll()
+                .antMatchers("/api/user/checkUsernameAvailability",
+                        "/api/user/checkEmailAvailability")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
 
         http.addFilterBefore(jwtAuthenticationFilter(),
                 UsernamePasswordAuthenticationFilter::class.java)

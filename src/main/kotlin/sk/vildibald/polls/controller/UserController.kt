@@ -1,14 +1,9 @@
 package sk.vildibald.polls.controller
 
-import org.springframework.security.access.prepost.PreAuthorize
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestParam
 import sk.vildibald.polls.payload.*
-import sk.vildibald.polls.security.CurrentUser
 import sk.vildibald.polls.security.UserPrincipal
 
-interface IUserControllerImpl {
+interface UserController {
     fun currentUserInfo(currentUser: UserPrincipal)
             : UserSummary
 

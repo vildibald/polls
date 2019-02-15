@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.beans.support.PagedListHolder.DEFAULT_PAGE_SIZE
 import sk.vildibald.polls.DEFAULT_PAGE_NUMBER
-import sk.vildibald.polls.controller.IUserControllerImpl
+import sk.vildibald.polls.controller.UserController
 import sk.vildibald.polls.payload.*
 
 
@@ -22,7 +22,7 @@ import sk.vildibald.polls.payload.*
 class UserControllerImpl(
         private val pollService: PollService,
         private val userService: UserService
-) : IUserControllerImpl {
+) : UserController {
     private val logger = LoggerFactory.getLogger(UserControllerImpl::class.java)
 
     @GetMapping("/user/me")
@@ -46,25 +46,25 @@ class UserControllerImpl(
 
     @GetMapping("/users/{username}/polls")
     override fun pollsCreatedBy(@PathVariable(value = "username")
-                          username: String,
+                                username: String,
                                 @CurrentUser
-                          currentUser: UserPrincipal,
+                                currentUser: UserPrincipal,
                                 @RequestParam(value = "page", defaultValue = DEFAULT_PAGE_NUMBER.toString())
-                          page: Int,
+                                page: Int,
                                 @RequestParam(value = "size", defaultValue = DEFAULT_PAGE_SIZE.toString())
-                          size: Int)
+                                size: Int)
             : PagedResponse<ExtendedPollResponse> =
             pollService.pollsCreatedBy(username, currentUser, page, size)
 
 
     @GetMapping("/users/{username}/votes")
     override fun pollsVotedBy(@PathVariable(value = "username")
-                        username: String,
+                              username: String,
                               @CurrentUser
-                        currentUser: UserPrincipal,
+                              currentUser: UserPrincipal,
                               @RequestParam(value = "page", defaultValue = DEFAULT_PAGE_NUMBER.toString())
-                        page: Int,
+                              page: Int,
                               @RequestParam(value = "size", defaultValue = DEFAULT_PAGE_SIZE.toString()) size:
-                        Int): PagedResponse<ExtendedPollResponse> =
+                              Int): PagedResponse<ExtendedPollResponse> =
             pollService.pollsVotedBy(username, currentUser, page, size)
 }

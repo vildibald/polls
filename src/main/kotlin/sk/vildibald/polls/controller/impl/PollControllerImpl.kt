@@ -30,12 +30,12 @@ class PollControllerImpl(
     private val logger = LoggerFactory.getLogger(PollControllerImpl::class.java)
 
     @GetMapping
-    override fun polls(@CurrentUser
-                 currentUser: UserPrincipal?,
-                       @RequestParam(value = "page", defaultValue = DEFAULT_PAGE_NUMBER.toString())
-                 page: Int,
-                       @RequestParam(value = "size", defaultValue = DEFAULT_PAGE_SIZE.toString())
-                 size: Int):
+    override fun allPolls(@CurrentUser
+                          currentUser: UserPrincipal?,
+                          @RequestParam(value = "page", defaultValue = DEFAULT_PAGE_NUMBER.toString())
+                          page: Int,
+                          @RequestParam(value = "size", defaultValue = DEFAULT_PAGE_SIZE.toString())
+                          size: Int):
             PagedResponse<ExtendedPollResponse> {
         return pollService.allPolls(currentUser, page, size)
     }

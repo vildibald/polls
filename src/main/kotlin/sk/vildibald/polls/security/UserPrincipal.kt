@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails
 import sk.vildibald.polls.model.User
 import java.util.*
 
-
 class UserPrincipal(
         val id: Long,
 
@@ -31,7 +30,6 @@ class UserPrincipal(
             password = user.password,
             authorities = user.roles.map { SimpleGrantedAuthority(it.name.name) }.toMutableList()
     )
-
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> = authorities
 

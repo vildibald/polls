@@ -4,22 +4,6 @@ import org.springframework.core.convert.converter.Converter
 import org.springframework.data.domain.Page
 import sk.vildibald.polls.payload.PagedResponse
 
-//class PageConverter<D, R>(private val convertedContent: List<R>)
-//    : Converter<Page<D>, PagedResponse<R>> {
-//    override fun convert(source: Page<D>)
-//            : PagedResponse<R>? {
-//        return PagedResponse(
-//                content = convertedContent,
-//                page = source.number,
-//                size = source.size,
-//                totalElements = source.totalElements,
-//                totalPages = source.totalElements,
-//                last = source.isLast
-//        )
-//    }
-//
-//}
-
 class PageConverter<D, R>(private val contentConverter: Converter<D, R>)
     : Converter<Page<D>, PagedResponse<R>> {
     override fun convert(source: Page<D>)

@@ -12,9 +12,9 @@ import sk.vildibald.polls.security.UserPrincipal
 import javax.validation.Valid
 
 interface PollController {
-    fun polls(currentUser: UserPrincipal?,
-              page: Int,
-              size: Int):
+    fun allPolls(currentUser: UserPrincipal?,
+                 page: Int,
+                 size: Int):
             PagedResponse<ExtendedPollResponse>
 
     fun createPoll(currentUser: UserPrincipal,

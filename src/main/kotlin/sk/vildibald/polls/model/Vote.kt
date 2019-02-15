@@ -1,10 +1,7 @@
 package sk.vildibald.polls.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.LastModifiedDate
-import sk.vildibald.polls.model.audit.DateAudit
-import java.time.Instant
+import sk.vildibald.polls.model.audit.DateAuditEntity
 import javax.persistence.*
 
 
@@ -32,4 +29,4 @@ data class Vote(
         @JoinColumn(name = "user_id", nullable = false)
         val user: User
 
-) : DateAudit()
+) : DateAuditEntity()

@@ -9,6 +9,9 @@ import org.springframework.security.core.context.SecurityContextHolder
 import sk.vildibald.polls.security.UserPrincipal
 import java.util.*
 
+/**
+ * This configuration defines auditor.
+ */
 @Configuration
 @EnableJpaAuditing
 class AuditingConfig {
@@ -17,6 +20,9 @@ class AuditingConfig {
             SpringSecurityAuditAwareImpl()
 }
 
+/**
+ * This [AuditorAware] implementation will determine if current user is authenticated.
+ */
 internal class SpringSecurityAuditAwareImpl : AuditorAware<Long> {
     override fun getCurrentAuditor(): Optional<Long> {
         val authentication = SecurityContextHolder.getContext().authentication

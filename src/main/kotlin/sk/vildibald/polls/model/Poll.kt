@@ -1,14 +1,9 @@
 package sk.vildibald.polls.model
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.hibernate.annotations.BatchSize
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
-import org.springframework.data.annotation.CreatedBy
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.LastModifiedBy
-import org.springframework.data.annotation.LastModifiedDate
-import sk.vildibald.polls.model.audit.UserDateAudit
+import sk.vildibald.polls.model.audit.UserDateAuditEntity
 import java.time.Instant
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -17,10 +12,6 @@ import javax.validation.constraints.Size
 
 @Entity
 @Table(name = "polls")
-@JsonIgnoreProperties(
-        value = ["created_at", "updated_at", "created_by", "updated_by"],
-        allowGetters = true
-)
 data class Poll(
         @NotBlank
         @Size(max = 200)
@@ -39,5 +30,5 @@ data class Poll(
 
         @NotNull
         val expirationDateTime: Instant
-) : UserDateAudit()
+) : UserDateAuditEntity()
 
