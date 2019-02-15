@@ -1,6 +1,5 @@
-## This is a reimplementation of [Polls app backend](https://github.com/callicoder/spring-security-react-ant-design-polls-app) in Kotlin using PostgreSQL database. 
 
-## Steps to Setup the Spring Boot Back end app (polling-app-server)
+## Steps to Setup the Spring Boot back end app
 
 1. **Clone the application**
 
@@ -34,7 +33,7 @@
 
 5. **Default Roles**
 	
-	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, I have added the following sql queries in `src/main/resources/data-hsqldb.sql` file. Spring boot will automatically execute this script on startup -
+	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, I have added the following sql queries in `src/main/resources/data-hsqldb.sql` file. Spring boot will automatically execute this script on startup
 
 	```sql
 	INSERT INTO public.roles(id, name)
@@ -44,5 +43,18 @@
 	```
 
 	Any new user who signs up to the app is assigned the `ROLE_USER` by default.
+	
+6. **(Optional) Integration tests**
 
+    You may run integration tests explicitly using defined task
+    
+    ```bash
+    gradle integrationTest
+    ```
+
+    Note that the unit and integration tests are separated using Spring profiles, therefore
+    integration tests will not be performed during gradle's standard `build` or `test` tasks, 
+    which is in general a preferred solution.
+    
+    Also integration tests use an embedded in-memory HSQLDB instead of PostgreSQL.  
    
