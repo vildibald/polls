@@ -34,7 +34,7 @@
 
 5. **Default Roles**
 	
-	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, I have added the following sql queries in `src/main/resources/data.sql` file. Spring boot will automatically execute this script on startup -
+	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, I have added the following sql queries in `src/main/resources/data-hsqldb.sql` file. Spring boot will automatically execute this script on startup -
 
 	```sql
 	INSERT INTO public.roles(id, name)

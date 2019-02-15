@@ -33,7 +33,7 @@ class PollServiceImpl(private val voteRepository: VoteRepository,
 
     private val logger = LoggerFactory.getLogger(PollServiceImpl::class.java)
 
-    override fun allPolls(currentUser: UserPrincipal,
+    override fun allPolls(currentUser: UserPrincipal?,
                           page: Int,
                           size: Int)
             : PagedResponse<ExtendedPollResponse> {

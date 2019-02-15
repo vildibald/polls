@@ -37,14 +37,19 @@ dependencies {
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "org.jetbrains.kotlin:kotlin-reflect"
-
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.8'
 
-
 	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testImplementation group: 'com.nhaarman', name: 'mockito-kotlin', version: '1.6.0'
+    testRuntimeOnly group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
+
+
 }
 
 compileKotlin {
@@ -58,6 +63,21 @@ compileTestKotlin {
     kotlinOptions {
         freeCompilerArgs = ['-Xjsr305=strict']
         jvmTarget = '1.8'
+    }
+}
+
+test {
+    useJUnit {
+//        includeCategories 'sk.vildibald.polls.UnitTest'
+//        excludeCategories 'sk.vildibald.polls.IntegrationTest'
+        systemProperty "testprofile", "unittest"
+    }
+}
+
+task integrationTest(type: Test) {
+    useJUnit {
+//        includeCategories 'sk.vildibald.polls.IntegrationTest'
+        systemProperty "testprofile", "integrationtest"
     }
 }
 

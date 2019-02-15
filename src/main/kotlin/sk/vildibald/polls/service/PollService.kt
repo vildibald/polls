@@ -6,7 +6,7 @@ import sk.vildibald.polls.security.UserPrincipal
 
 interface PollService {
 
-    fun allPolls(currentUser: UserPrincipal,
+    fun allPolls(currentUser: UserPrincipal?,
                  page: Int = 0,
                  size: Int = DEFAULT_PAGE_SIZE)
             : PagedResponse<ExtendedPollResponse>
