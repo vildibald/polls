@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlinVersion = '1.3.11'
+        kotlinVersion = '1.3.21'
         springBootVersion = '2.1.2.RELEASE'
     }
     repositories {
@@ -68,19 +68,15 @@ compileTestKotlin {
 
 test {
     useJUnit {
-//        includeCategories 'sk.vildibald.polls.UnitTest'
-//        excludeCategories 'sk.vildibald.polls.IntegrationTest'
         systemProperty "testprofile", "unittest"
     }
 }
 
 task integrationTest(type: Test) {
     useJUnit {
-//        includeCategories 'sk.vildibald.polls.IntegrationTest'
         systemProperty "testprofile", "integrationtest"
     }
 }
-
 
 idea {
     module {
@@ -88,6 +84,7 @@ idea {
         downloadSources = true
     }
 }
+
 eclipse {
     classpath {
         downloadJavadoc = true
